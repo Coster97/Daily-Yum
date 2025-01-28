@@ -16,13 +16,13 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>이호균 메롱</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+          벅빅 좋아요 {count}
         </button>
         <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+          벅빅 좋아하면 눌러
         </p>
       </div>
       <p className="read-the-docs">
