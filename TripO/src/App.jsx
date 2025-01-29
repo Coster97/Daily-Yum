@@ -1,35 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from "react";
+import SplashScreen from "./components/SplashScreen";
+import LoginPage from "./pages/LoginPage";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [showSplash, setShowSplash] = useState(true);
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>이호균 메롱</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          벅빅 좋아요 {count}
-        </button>
-        <p>
-          벅빅 좋아하면 눌러
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 3000);
 
-export default App
+    return () => clearTimeout(timer);
+  }, []);
+
+  return <>{showSplash ? <SplashScreen /> : <LoginPage />}</>;
+};
+
+export default App;
