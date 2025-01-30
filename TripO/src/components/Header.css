@@ -1,0 +1,62 @@
+.container {
+  width: 100%; /* ✅ 가로 너비를 화면 전체로 설정 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box; /* ✅ 패딩 포함하여 너비 계산 */
+  border-bottom: 1px solid black;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* 내부 요소 간격 */
+  margin-left: auto; /* ✅ 왼쪽 공간을 강제로 확보 (부모가 flex일 때 필수!) */
+}
+
+a {
+  color: black !important; /* ✅ 모든 링크를 검은색으로 설정 */
+  text-decoration: none; /* ✅ 밑줄 제거 (필요한 경우) */
+  font-weight: 600;
+}
+
+a:hover {
+  color: gray; /* ✅ 마우스 오버 시 색상 변경 (선택 사항) */
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black; /* 아이콘 색상 */
+  padding-top: 5px;
+}
+
+.menu-button:hover {
+  color: gray; /* 마우스 오버 시 색 변경 */
+}
+
+.container-2 {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+  font-weight: 400;
+}
+
+.type-item {
+  color: black;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.type-item:hover {
+  color: gray;
+}
+
+/* ✅ 현재 페이지에 해당하는 메뉴 스타일 강조 */
+.type-item.active {
+  font-weight: bold;
+  color: rgb(0, 0, 0); /* 강조 색상 */
+  border-bottom: 2px solid rgb(0, 0, 0); /* 밑줄 강조 */
+}

@@ -1,0 +1,13 @@
+.tourlist-container {
+  display: flex;
+  gap: 10px;
+}
+
+.tour-address {
+  font-weight: 500;
+  font-size: small;
+}
+
+input {
+  background-color: yellow;
+}

@@ -1,0 +1,58 @@
+.login-section {
+  display: flex;
+  flex-direction: column; /* ✅ 버튼을 세로 정렬 */
+  align-items: center;
+  gap: 10px; /* ✅ 버튼 사이 간격 */
+  width: 100%;
+  max-width: 400px; /* ✅ 최대 너비 지정 */
+  padding-bottom: 30px;
+}
+
+.login-text {
+  padding-bottom: 40px;
+}
+
+button {
+  width: 100%; /* ✅ 모든 버튼 너비 동일 */
+  max-width: 300px; /* ✅ 버튼 크기 제한 */
+  height: 50px; /* ✅ 버튼 높이 통일 */
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  font-size: 16px; /* ✅ 폰트 크기 동일 */
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #ffffff;
+}
+
+@keyframes train-move {
+  0% {
+    transform: translateX(-20vw); /* 화면 왼쪽 밖에서 시작 */
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(50vw); /* 화면 중간 지점 */
+  }
+  100% {
+    transform: translateX(100vw); /* 화면 오른쪽 밖으로 나감 */
+    opacity: 0.6;
+  }
+}
+
+.train-container {
+  position: absolute;
+  bottom: 10px; /* ✅ 로그인 페이지 하단에 위치 */
+  left: -100px; /* ✅ 처음에는 화면 밖에서 시작 */
+  width: 120px; /* ✅ 기차 크기 조절 */
+  height: auto;
+  animation: train-move 8s linear infinite; /* ✅ 8초 동안 이동 후 반복 */
+}
+
+.train-img {
+  width: 100%;
+  height: auto;
+}

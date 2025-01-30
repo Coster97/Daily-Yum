@@ -1,34 +1,37 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import ImageSlider from "../components/ImageSlider"; // ✅ 슬라이더 추가
+import "./LoginPage.css"; // 스타일 적용
+import train from "/assets/train.png";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    localStorage.setItem("loggedIn", "true");
+    navigate("/home");
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
-      {/* 헤더 */}
-      <header className="w-full text-center bg-blue-500 text-white py-4">
-        <h1 className="text-2xl font-bold">TripO</h1>
-      </header>
-
-      {/* 메인 콘텐츠 */}
-      <main className="flex flex-col items-center justify-center flex-1 w-full max-w-md bg-white p-4 rounded-lg shadow-md">
-        <p className="text-lg text-gray-800 mb-6">
-          전국 추천 여행지와 맛집을 한눈에!
-        </p>
-
-        {/* 버튼 그룹 */}
-        <div className="button-container">
-          <button className="signup-btn px-4 py-2 text-white rounded w-4/5">
-            카카오로 시작하기
-          </button>
-          <button className="signup-btn px-4 py-2 text-white rounded w-4/5">
-            구글로 시작하기
+    <div className="login-container">
+      <main className="login-content">
+        <div className="login-text">
+          <h1>TripO</h1>
+          <p>지금 바로, 가볍게 떠나보세요!</p>
+        </div>
+        <div className="login-section">
+          <button>카카오로 시작하기</button>
+          <button>구글로 시작하기</button>
+          <button>네이버로 시작하기</button>
+          <button className="login-btn" onClick={handleLogin}>
+            테스트 버튼
           </button>
         </div>
       </main>
-
-      {/* 푸터 */}
-      <footer className="w-full text-center bg-blue-500 text-white py-2">
-        <p>© 2025 TripO</p>
-      </footer>
+      {/* ✅ 기차 애니메이션 추가 */}
+      <div className="train-container">
+        <img src={train} alt="기차" className="train-img" />
+      </div>
     </div>
   );
 };
