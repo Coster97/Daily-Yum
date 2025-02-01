@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
-import "./Header.css";
+import "../styles/Header.css";
 
 const Header = () => {
   const location = useLocation(); // ✅ 현재 URL 가져오기

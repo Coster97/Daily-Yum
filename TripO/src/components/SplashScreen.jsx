@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import "./SplashScreen.css"; // ✅ CSS 파일 추가
+import "../styles/SplashScreen.css"; // ✅ CSS 파일 추가
 
 const SplashScreen = () => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);

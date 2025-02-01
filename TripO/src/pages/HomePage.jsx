@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import "./HomePage.css";
+import "../styles/HomePage.css";
 
 const tourSpots = [
   { name: "서울", image: "/assets/seoul.jpg" },

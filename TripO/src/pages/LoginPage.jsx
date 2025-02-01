@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import ImageSlider from "../components/ImageSlider"; // ✅ 슬라이더 추가
-import "./LoginPage.css"; // 스타일 적용
+import "../styles/LoginPage.css"; // 스타일 적용
 import train from "/assets/train.png";
 
 const LoginPage = () => {

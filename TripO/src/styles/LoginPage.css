@@ -14,8 +14,8 @@
 
 button {
   width: 100%; /* ✅ 모든 버튼 너비 동일 */
-  max-width: 300px; /* ✅ 버튼 크기 제한 */
-  height: 50px; /* ✅ 버튼 높이 통일 */
+  max-width: 200px; /* ✅ 버튼 크기 제한 */
+  height: 40px; /* ✅ 버튼 높이 통일 */
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   font-size: 16px; /* ✅ 폰트 크기 동일 */
