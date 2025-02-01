@@ -9,5 +9,15 @@
 }
 
 input {
-  background-color: yellow;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.271);
+  padding: 10px;
+  border-radius: 100px;
+  width: 90%;
+  color: black;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.569);
 }

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import TourList from "../components/TourList";
 import Header from "../components/Header";
 
 const TourPage = () => {
@@ -11,8 +10,10 @@ const TourPage = () => {
     <div className="tour-page">
       <Header />
       <main className="content">
-        <input type="text" placeholder={`${keyword}의 가장 인기있는 여행지`} />
-        <TourList keyword={keyword} />
+        <input
+          type="text"
+          placeholder={`🔍 ${keyword}의 가장 인기있는 여행지`}
+        />
       </main>
     </div>
   );
