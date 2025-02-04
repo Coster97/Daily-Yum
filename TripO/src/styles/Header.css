@@ -5,6 +5,7 @@
   align-items: center;
   box-sizing: border-box; /* ✅ 패딩 포함하여 너비 계산 */
   border-bottom: 1px solid black;
+  padding-bottom: 10px;
 }
 
 .header-right {

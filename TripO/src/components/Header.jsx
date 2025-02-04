@@ -67,7 +67,7 @@ const Header = () => {
           ) : (
             // ✅ 로그인되지 않은 경우: 로그인 버튼 표시
             <button className="menu-button" onClick={() => navigate("/login")}>
-              <FiUser size={24} />
+              <FiUser size={22} />
             </button>
           )}
         </div>
