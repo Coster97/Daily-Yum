@@ -9,9 +9,7 @@ import {
 import SplashScreen from "./components/SplashScreen";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
-import RestaurantPage from "./styles/RestaurantPage";
 import CustomPage from "./pages/CustomPage";
-import RecommendPage from "./pages/Recommend";
 import TourPage from "./pages/TourPage";
 
 const App = () => {
@@ -25,6 +23,7 @@ const App = () => {
 // ✅ 스플래시 후 자동 이동 로직 수정
 const AppContent = () => {
   const [showSplash, setShowSplash] = useState(true);
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,7 +36,7 @@ const AppContent = () => {
       setTimeout(() => {
         localStorage.setItem("splashShown", "true");
         setShowSplash(false);
-        navigate("/home");
+        navigate("/login");
       }, 3000);
     }
   }, [navigate]);
@@ -52,9 +51,6 @@ const AppContent = () => {
       <Route path="/home" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/tour" element={<TourPage />} />
-      <Route path="/restaurant" element={<RestaurantPage />} />
-      <Route path="/custom" element={<CustomPage />} />
-      <Route path="/recommend" element={<RecommendPage />} />
     </Routes>
   );
 };

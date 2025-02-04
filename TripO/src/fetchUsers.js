@@ -1,4 +1,4 @@
-import { db } from "./src/services/firebaseConfig.js";
+import { db } from "./services/firebaseConfig.js";
 import { collection, getDocs } from "firebase/firestore";
 
 // ✅ Firestore의 "users" 컬렉션 가져오기

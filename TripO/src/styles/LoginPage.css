@@ -1,58 +1,52 @@
-.login-section {
+.login-container {
   display: flex;
-  flex-direction: column; /* ✅ 버튼을 세로 정렬 */
-  align-items: center;
-  gap: 10px; /* ✅ 버튼 사이 간격 */
-  width: 100%;
-  max-width: 400px; /* ✅ 최대 너비 지정 */
-  padding-bottom: 30px;
+  justify-content: center;
+  text-align: center;
 }
 
-.login-text {
-  padding-bottom: 40px;
+.login-btn-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 10%;
+  padding-top: 10%;
+  border-top: 1px solid gray;
 }
 
 button {
-  width: 100%; /* ✅ 모든 버튼 너비 동일 */
-  max-width: 200px; /* ✅ 버튼 크기 제한 */
-  height: 40px; /* ✅ 버튼 높이 통일 */
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
-  font-size: 16px; /* ✅ 폰트 크기 동일 */
-  border: 2px solid rgb(0, 0, 0);
+  padding: 13px;
+  margin-bottom: 14px;
   border-radius: 50px;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
+  border: none;
+  font-size: large;
+}
+
+#kakao-btn {
+  background-color: rgb(255, 213, 0);
+  color: black;
+  font-weight: 400;
+}
+
+#kakao-btn img {
+  height: 1em;
+  width: auto;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+#google-btn {
+  background-color: white;
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 0.349);
+}
+
+#google-btn img {
+  height: 1em;
+  width: auto;
+  margin-right: 8px;
+  vertical-align: middle;
 }
 
 button:hover {
-  background-color: #ffffff;
-}
-
-@keyframes train-move {
-  0% {
-    transform: translateX(-20vw); /* 화면 왼쪽 밖에서 시작 */
-    opacity: 1;
-  }
-  50% {
-    transform: translateX(50vw); /* 화면 중간 지점 */
-  }
-  100% {
-    transform: translateX(100vw); /* 화면 오른쪽 밖으로 나감 */
-    opacity: 0.6;
-  }
-}
-
-.train-container {
-  position: absolute;
-  bottom: 10px; /* ✅ 로그인 페이지 하단에 위치 */
-  left: -100px; /* ✅ 처음에는 화면 밖에서 시작 */
-  width: 120px; /* ✅ 기차 크기 조절 */
-  height: auto;
-  animation: train-move 8s linear infinite; /* ✅ 8초 동안 이동 후 반복 */
-}
-
-.train-img {
-  width: 100%;
-  height: auto;
+  border: 2px solid rgba(0, 0, 0, 0.532) !important;
 }
