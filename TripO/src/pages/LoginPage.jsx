@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/LoginPage.css";
 import { signInWithGoogle, logout } from "../services/googleAuth";
 
 const LoginPage = () => {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     const userData = await signInWithGoogle();
     if (userData) {
       setUser(userData);
+      navigate("/home");
     }
   };
 
