@@ -13,18 +13,16 @@
   border-top: 1px solid gray;
 }
 
-button {
+#kakao-btn {
+  background-color: rgb(255, 213, 0);
+  color: black;
+  font-weight: 400;
+  cursor: pointer;
   padding: 13px;
   margin-bottom: 14px;
   border-radius: 50px;
   border: none;
   font-size: large;
-}
-
-#kakao-btn {
-  background-color: rgb(255, 213, 0);
-  color: black;
-  font-weight: 400;
 }
 
 #kakao-btn img {
@@ -38,6 +36,11 @@ button {
   background-color: white;
   color: black;
   border: 1px solid rgba(0, 0, 0, 0.349);
+  cursor: pointer;
+  padding: 13px;
+  margin-bottom: 14px;
+  border-radius: 50px;
+  font-size: large;
 }
 
 #google-btn img {
@@ -45,8 +48,4 @@ button {
   width: auto;
   margin-right: 8px;
   vertical-align: middle;
-}
-
-button:hover {
-  border: 2px solid rgba(0, 0, 0, 0.532) !important;
 }

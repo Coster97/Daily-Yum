@@ -36,7 +36,7 @@ const AppContent = () => {
       setTimeout(() => {
         localStorage.setItem("splashShown", "true");
         setShowSplash(false);
-        navigate("/login");
+        navigate("/home");
       }, 3000);
     }
   }, [navigate]);
