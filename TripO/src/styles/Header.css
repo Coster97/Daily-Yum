@@ -36,6 +36,33 @@ a:hover {
   color: gray; /* 마우스 오버 시 색 변경 */
 }
 
+/* ✅ 드롭다운 메뉴 스타일 */
+.dropdown-menu {
+  position: absolute;
+  top: 50px; /* ✅ 버튼 아래에 표시 */
+  right: 20px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+/* ✅ 드롭다운 메뉴 항목 스타일 */
+.dropdown-menu div {
+  padding: 10px 15px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.dropdown-menu div:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
 .container-2 {
   display: flex;
   justify-content: space-around;
