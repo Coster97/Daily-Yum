@@ -9,6 +9,7 @@ import {
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import TourPage from "./pages/TourPage";
+import IngredientForm from "./pages/IngredientForm";
 
 const App = () => {
   return (
@@ -25,8 +26,8 @@ const AppContent = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/home" element={<HomePage />} />
+      <Route path="/" element={<IngredientForm />} />
+      <Route path="/home" element={<IngredientForm />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/tour" element={<TourPage />} />
     </Routes>

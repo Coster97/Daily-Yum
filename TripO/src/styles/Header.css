@@ -29,7 +29,7 @@ a:hover {
   background: none;
   border: none;
   cursor: pointer;
-  color: black; /* 아이콘 색상 */
+  color: rgba(0, 0, 0, 0.553); /* 아이콘 색상 */
   padding-top: 5px;
 }
 
@@ -69,7 +69,7 @@ a:hover {
   justify-content: space-around;
   margin: 1px;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 .type-item {
@@ -87,10 +87,10 @@ a:hover {
 .type-item.active {
   font-weight: bold;
   color: rgb(0, 0, 0); /* 강조 색상 */
-  border-bottom: 2px solid rgb(192, 159, 37); /* 밑줄 강조 */
+  border-bottom: 2px solid rgba(211, 142, 207, 0.749); /* 밑줄 강조 */
 }
 
 .logo {
-  width: 60px; /* ✅ 적절한 크기로 조정 */
+  width: 50px; /* ✅ 적절한 크기로 조정 */
   height: auto;
 }

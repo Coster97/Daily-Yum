@@ -5,7 +5,6 @@ import "../styles/Header.css";
 import checkAuthState from "../services/authState"; // ✅ 로그인 상태 가져오기
 import { signOut } from "firebase/auth";
 import { auth } from "../services/firebaseConfig";
-import logo from "/public/assets/logo.png";
 
 const Header = () => {
   const [user, setUser] = useState(null);

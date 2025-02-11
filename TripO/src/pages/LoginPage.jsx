@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/LoginPage.css";
 import { signInWithGoogle, logout } from "../services/googleAuth";
-import titlelogo from "/public/assets/title-logo.png";
 
 const LoginPage = () => {
   const [user, setUser] = useState(null);
