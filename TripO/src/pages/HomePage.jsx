@@ -190,12 +190,31 @@ const HomePage = ({ setIngredients }) => {
         {/* ✅ 냉장고 영역 */}
         <div className="fridge-section">
           <h3>내 냉장고</h3>
-          <p>저장된 재료를 확인해보세요.</p>
+          {/* ✅ 카테고리 카드 컨테이너 */}
+          <div className="category-list">
+            {[
+              { name: "야채/채소", image: "/assets/vegetable.jpg" },
+              { name: "과일", image: "/assets/fruit.jpg" },
+              { name: "육류", image: "/assets/meat.jpg" },
+              { name: "해산물", image: "/assets/seafood.jpg" },
+              { name: "계란/유제품", image: "/assets/dairy.jpg" },
+              { name: "가공식품", image: "/assets/processed.jpg" },
+              { name: "기타", image: "/assets/etc.jpg" },
+            ].map((category, index) => (
+              <div
+                key={index}
+                className="category-card"
+                style={{ backgroundImage: `url(${category.image})` }}
+              >
+                <div className="category-overlay">{category.name}</div>
+              </div>
+            ))}
+          </div>
           <button
             className="add-ingredient-btn"
             onClick={() => setIsModalOpen(true)}
           >
-            + 재료 추가
+            +
           </button>
         </div>
 
