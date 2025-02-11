@@ -198,7 +198,7 @@ select::-ms-expand {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 20px;
+  padding: 10px 20px;
   background: #f8f8f8;
   border-bottom: 1px solid #ddd;
   position: sticky;
