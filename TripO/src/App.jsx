@@ -6,10 +6,8 @@ import {
   useNavigate,
   useLocation,
 } from "react-router-dom";
-import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
-import TourPage from "./pages/TourPage";
-import IngredientForm from "./pages/IngredientForm";
+import HomePage from "./pages/HomePage";
 
 const App = () => {
   return (
@@ -26,10 +24,9 @@ const AppContent = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<IngredientForm />} />
-      <Route path="/home" element={<IngredientForm />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/home" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/tour" element={<TourPage />} />
     </Routes>
   );
 };

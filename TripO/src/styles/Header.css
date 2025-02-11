@@ -87,7 +87,7 @@ a:hover {
 .type-item.active {
   font-weight: bold;
   color: rgb(0, 0, 0); /* 강조 색상 */
-  border-bottom: 2px solid rgba(211, 142, 207, 0.749); /* 밑줄 강조 */
+  border-bottom: 2px solid rgb(244, 134, 56); /* 밑줄 강조 */
 }
 
 .logo {

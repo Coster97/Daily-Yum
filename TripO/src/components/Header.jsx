@@ -78,7 +78,7 @@ const Header = () => {
       <div className="container-2">
         <div
           className={`type-item ${
-            location.pathname === "/home" || location.pathname === "/tour"
+            location.pathname === "/home" || location.pathname === "/"
               ? "active"
               : ""
           }`}

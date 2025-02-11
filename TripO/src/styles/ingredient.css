@@ -1,21 +1,37 @@
-.inredient-title {
-  font-size: 1.5rem;
+.ingredient-flex-div {
+  display: flex;
+  justify-content: space-between; /* ✅ 두 섹션을 양쪽 끝으로 배치 */
+  align-items: flex-start;
+  gap: 40px; /* ✅ 냉장고와 재료 추가 폼 사이 간격 */
 }
 
-.ingredient-div {
-  text-align: center;
-  padding: 20px;
+/* ✅ 냉장고 영역 */
+.fridge-section {
+  width: 80%;
+  text-align: start;
+  padding: 40px;
 }
 
+/* ✅ 세로 구분선 추가 */
+.divider {
+  width: 2px; /* ✅ 구분선 두께 */
+  background-color: rgba(0, 0, 0, 0.2); /* ✅ 연한 검은색 */
+  height: 100%; /* ✅ 부모 요소 높이에 맞춤 */
+  min-height: 300px; /* ✅ 최소 높이 설정 */
+  align-self: stretch; /* ✅ 양쪽 섹션과 같은 높이 유지 */
+}
+
+/* ✅ 재료 추가 폼 */
 .ingredient-form {
+  width: 65%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 15px;
+  padding: 40px;
 }
 
 .ingredient-form div {
-  padding: 5%;
+  padding-bottom: 5%;
 }
 
 select {
@@ -71,4 +87,95 @@ select::-ms-expand {
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none; /* ✅ 클릭 이벤트 방해 안 함 */
+}
+
+/* ✅ 모바일 대응 */
+@media (max-width: 768px) {
+  .fridge-section h3 {
+    display: none;
+  }
+  .fridge-section {
+    padding: 0px;
+  }
+  .ingredient-flex-div {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ingredient-form {
+    display: none;
+  }
+
+  .divider {
+    display: none; /* ✅ 모바일에서는 구분선 제거 */
+  }
+
+  .add-ingredient-btn {
+    display: block;
+  }
+}
+
+.add-button {
+  background-color: #4caf50; /* ✅ 녹색 */
+  color: white; /* ✅ 텍스트 색상 */
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* ✅ 마우스 오버 효과 */
+.add-button:hover {
+  background-color: #45a049;
+}
+
+/* ✅ 클릭 시 효과 */
+.add-button:active {
+  background-color: #3e8e41;
+}
+
+/* ✅ 모바일 반응형 */
+@media (max-width: 768px) {
+  .add-button {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+/* ✅ 기본적으로 버튼 숨기기 */
+.add-ingredient-btn {
+  display: none;
+}
+
+/* ✅ 모바일에서만 버튼 보이게 */
+@media (max-width: 768px) {
+  .add-ingredient-btn {
+    display: block; /* ✅ 모바일에서 버튼 표시 */
+    background-color: #4caf50;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 10px;
+  }
+
+  /* ✅ 마우스 오버 효과 */
+  .add-ingredient-btn:hover {
+    background-color: #45a049;
+  }
+
+  /* ✅ 클릭 시 효과 */
+  .add-ingredient-btn:active {
+    background-color: #3e8e41;
+  }
 }
