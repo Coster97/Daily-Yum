@@ -1,11 +1,11 @@
 .container {
-  width: 100%; /* ✅ 가로 너비를 화면 전체로 설정 */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-sizing: border-box; /* ✅ 패딩 포함하여 너비 계산 */
+  padding: 0 10px; /* ✅ 좌우 여백 확인 */
+  width: 100%;
+  box-sizing: border-box;
   border-bottom: 1px solid black;
-  padding-bottom: 10px;
 }
 
 .header-right {
@@ -67,8 +67,9 @@ a:hover {
 .container-2 {
   display: flex;
   justify-content: space-around;
-  margin: 10px;
+  margin: 1px;
   font-weight: 400;
+  font-size: 1rem;
 }
 
 .type-item {
@@ -86,5 +87,10 @@ a:hover {
 .type-item.active {
   font-weight: bold;
   color: rgb(0, 0, 0); /* 강조 색상 */
-  border-bottom: 2px solid rgb(0, 0, 0); /* 밑줄 강조 */
+  border-bottom: 2px solid rgb(192, 159, 37); /* 밑줄 강조 */
+}
+
+.logo {
+  width: 60px; /* ✅ 적절한 크기로 조정 */
+  height: auto;
 }

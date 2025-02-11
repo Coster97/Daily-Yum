@@ -5,6 +5,7 @@ import "../styles/Header.css";
 import checkAuthState from "../services/authState"; // ✅ 로그인 상태 가져오기
 import { signOut } from "firebase/auth";
 import { auth } from "../services/firebaseConfig";
+import logo from "/public/assets/logo.png";
 
 const Header = () => {
   const [user, setUser] = useState(null);
@@ -47,7 +48,9 @@ const Header = () => {
   return (
     <header className="header">
       <div className="container">
-        <a href="/home">TripO</a>
+        <a href="/home">
+          <img src="/assets/logo.png" alt="Logo" className="logo" />
+        </a>
         <div className="header-right">
           {user ? (
             // ✅ 로그인된 경우: 메뉴 버튼 + 드롭다운
@@ -82,7 +85,7 @@ const Header = () => {
           }`}
           onClick={() => navigate("/home")}
         >
-          여행
+          내 냉장고
         </div>
         <div
           className={`type-item ${
@@ -90,7 +93,7 @@ const Header = () => {
           }`}
           onClick={() => navigate("/restaurant")}
         >
-          숙소
+          추천요리
         </div>
         <div
           className={`type-item ${
@@ -98,7 +101,7 @@ const Header = () => {
           }`}
           onClick={() => navigate("/custom")}
         >
-          교통
+          커뮤니티
         </div>
         <div
           className={`type-item ${
@@ -106,7 +109,7 @@ const Header = () => {
           }`}
           onClick={() => navigate("/recommend")}
         >
-          특가
+          오늘의 레시피
         </div>
       </div>
     </header>

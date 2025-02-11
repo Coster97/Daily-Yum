@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/LoginPage.css";
 import { signInWithGoogle, logout } from "../services/googleAuth";
+import titlelogo from "/public/assets/title-logo.png";
 
 const LoginPage = () => {
   const [user, setUser] = useState(null);
@@ -26,9 +27,15 @@ const LoginPage = () => {
 
   return (
     <div className="login-container">
+      <div className="title-div">
+        <img
+          src="/assets/title-logo.png"
+          alt="title-Logo"
+          className="title-logo"
+        />
+        <div className="login-text">회원가입/로그인</div>
+      </div>
       <main className="login-content">
-        <h1>TripO</h1>
-        <p>나를 찾는 여행, 검색부터 예약까지 간편하게!</p>
         <div className="login-btn-container">
           <button id="kakao-btn" onClick={handleLogin}>
             <img src="/assets/kakao-icon.png" alt="카카오 아이콘" />

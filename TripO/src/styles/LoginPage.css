@@ -1,7 +1,19 @@
 .login-container {
-  display: flex;
-  justify-content: center;
   text-align: center;
+  align-items: center;
+  padding: 10%;
+}
+
+.title-logo {
+  width: 100%; /* ✅ 부모 요소의 크기에 맞게 조정 */
+  max-width: 30rem; /* ✅ 최대 크기 설정 */
+  height: auto; /* ✅ 비율 유지 */
+}
+
+.login-text {
+  padding-top: 10%;
+  font-weight: 700;
+  font-size: 1.3rem;
 }
 
 .login-btn-container {
