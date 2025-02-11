@@ -1,13 +1,14 @@
 import React from "react";
 import Header from "../components/Header";
 
-const RecommendPage = () => {
+const RecipePage = () => {
   return (
     <div>
       <Header />
-      <div></div>
+      <div>
+      </div>
     </div>
   );
 };
 
-export default RecommendPage;
+export default RecipePage;

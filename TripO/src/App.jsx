@@ -8,6 +8,9 @@ import {
 } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
+import RecommendPage from "./pages/Recommend";
+import CommunitydPage from "./pages/Community";
+import RecipePage from "./pages/RecipePage";
 
 const App = () => {
   return (
@@ -27,6 +30,9 @@ const AppContent = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="/home" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/recommend" element={<RecommendPage />} />
+      <Route path="/community" element={<CommunitydPage />} />
+      <Route path="/recipe" element={<RecipePage />} />
     </Routes>
   );
 };

@@ -88,25 +88,25 @@ const Header = () => {
         </div>
         <div
           className={`type-item ${
-            location.pathname === "/restaurant" ? "active" : ""
+            location.pathname === "/recommend" ? "active" : ""
           }`}
-          onClick={() => navigate("/restaurant")}
+          onClick={() => navigate("/recommend")}
         >
           추천요리
         </div>
         <div
           className={`type-item ${
-            location.pathname === "/custom" ? "active" : ""
+            location.pathname === "/community" ? "active" : ""
           }`}
-          onClick={() => navigate("/custom")}
+          onClick={() => navigate("/community")}
         >
           커뮤니티
         </div>
         <div
           className={`type-item ${
-            location.pathname === "/recommend" ? "active" : ""
+            location.pathname === "/recipe" ? "active" : ""
           }`}
-          onClick={() => navigate("/recommend")}
+          onClick={() => navigate("/recipe")}
         >
           오늘의 레시피
         </div>
