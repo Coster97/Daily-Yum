@@ -67,8 +67,7 @@ input {
   appearance: none; /* ✅ 기본 UI 스타일 제거 (브라우저 기본 스타일 없애기) */
 }
 
-/* ✅ 드롭다운 화살표 변경 */
-select::-ms-expand {
+✅ 드롭다운 화살표 변경 select::-ms-expand {
   display: none; /* IE 지원 */
 }
 
@@ -315,4 +314,28 @@ select::-ms-expand {
 /* ✅ 마우스 오버 효과 */
 .category-card:hover {
   transform: scale(1.05);
+}
+
+.fridge-modal-page {
+  position: fixed; /* ✅ 화면에 고정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* ✅ 전체 화면 높이 */
+  background-color: rgba(0, 0, 0, 0.5); /* ✅ 반투명 배경 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* ✅ 가장 위로 올리기 */
+}
+
+.fridge-modal-content {
+  background-color: rgba(255, 255, 255, 0.875);
+  width: 90%;
+  max-width: 400px; /* ✅ 모달 크기 조정 */
+  margin: 20px;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
 }
