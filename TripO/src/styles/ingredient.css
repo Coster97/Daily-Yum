@@ -284,7 +284,7 @@ select::-ms-expand {
 /* ✅ 개별 카테고리 카드 스타일 */
 .category-card {
   width: 90%; /* ✅ 카드 크기 */
-  max-width: 300px; /* ✅ 최대 너비 설정 */
+  max-width: 400px; /* ✅ 최대 너비 설정 */
   height: 100px; /* ✅ 카드 높이 설정 */
   background-size: cover; /* ✅ 이미지 크기 자동 조정 */
   background-position: center; /* ✅ 이미지 중앙 정렬 */
