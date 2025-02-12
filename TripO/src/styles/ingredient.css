@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  padding: 40px;
+  padding: 1.5%;
 }
 
 .ingredient-form div {
@@ -277,7 +277,7 @@ input {
   white-space: nowrap; /* ✅ 텍스트 줄바꿈 방지 */
   overflow-x: auto; /* ✅ 가로 스크롤 허용 */
   display: flex;
-  gap: 20px; /* ✅ 카드 간격 */
+  gap: 25px; /* ✅ 카드 간격 */
   scrollbar-width: none; /* ✅ 기본 스크롤바 제거 (Firefox) */
   -ms-overflow-style: none; /* ✅ 기본 스크롤바 제거 (IE/Edge) */
   font-size: 0.8rem;
@@ -289,12 +289,11 @@ input {
 /* ✅ 마우스 오버 효과 */
 .category-card:hover {
   transform: scale(1.1);
-  font-weight: 700;
 }
 
 .category-card.active {
-  font-weight: 700;
-  border-bottom: 2px solid rgb(244, 134, 56); /* 밑줄 강조 */
+  transform: scale(1.1);
+  font-weight: 800;
 }
 
 .ingredients-list {

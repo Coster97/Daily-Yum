@@ -7,7 +7,8 @@ import "../styles/Ingredient.css";
 import fetchCategoryIngredients from "../services/fetchCategory";
 
 const HomePage = () => {
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("전체");
+  const [selectedMenuCategory, setSelectedMenuCategory] = useState("");
   const [selectedIngredient, setSelectedIngredient] = useState("");
   const [customIngredient, setCustomIngredient] = useState("");
   const [amount, setAmount] = useState("");
@@ -17,6 +18,16 @@ const HomePage = () => {
 
   const defaultCategories = [
     "전체",
+    "야채/채소",
+    "과일",
+    "육류",
+    "해산물",
+    "계란/유제품",
+    "가공식품",
+    "기타",
+  ];
+
+  const menuCategories = [
     "야채/채소",
     "과일",
     "육류",
@@ -315,16 +326,15 @@ const HomePage = () => {
     ],
   };
 
-  // ✅ Firestore에서 실시간 데이터 가져오기
   useEffect(() => {
     const user = auth.currentUser;
     if (!user) return;
 
     const ingredientsRef = collection(db, `users/${user.uid}/ingredients`);
     const unsubscribe = onSnapshot(ingredientsRef, (snapshot) => {
-      setIngredients(
-        snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-      );
+      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      setIngredients(data);
+      setFridgeItems(data); // ✅ 처음에는 전체 데이터 표시
     });
 
     return () => unsubscribe();
@@ -364,6 +374,7 @@ const HomePage = () => {
       setCustomIngredient("");
       setSelectedIngredient("");
       setAmount("");
+      window.scrollTo(0, 0);
       setIsAddModalOpen(false);
     } catch (error) {
       console.error("❌ 재료 추가 실패:", error);
@@ -377,8 +388,6 @@ const HomePage = () => {
       <div className="ingredient-flex-div">
         {/* ✅ 냉장고 영역 */}
         <div className="fridge-section">
-          <h3>내 냉장고</h3>
-
           <div className="category-list">
             {defaultCategories.map((category) => (
               <div
@@ -392,16 +401,16 @@ const HomePage = () => {
             ))}
           </div>
           <div className="ingredients-list">
-              {fridgeItems.length > 0 ? (
-                fridgeItems.map((item) => (
-                  <div className="ingredient-items" key={item.id}>
-                    {item.name} - {item.amount}
-                  </div>
-                ))
-              ) : (
-                <p>이 카테고리에 저장된 재료가 없습니다.</p>
-              )}
-            </div>
+            {fridgeItems.length > 0 ? (
+              fridgeItems.map((item) => (
+                <div className="ingredient-items" key={item.id}>
+                  {item.name} - {item.amount}
+                </div>
+              ))
+            ) : (
+              <p>이 카테고리에 저장된 재료가 없습니다.</p>
+            )}
+          </div>
           <button
             className="add-ingredient-btn"
             onClick={() => setIsAddModalOpen(true)}
@@ -424,11 +433,11 @@ const HomePage = () => {
           >
             <div className="step">
               <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
+                value={selectedMenuCategory}
+                onChange={(e) => setSelectedMenuCategory(e.target.value)}
               >
                 <option value="">카테고리 선택</option>
-                {defaultCategories.slice(1).map((category, index) => (
+                {menuCategories.map((category, index) => (
                   <option key={index} value={category}>
                     {category}
                   </option>
@@ -437,19 +446,21 @@ const HomePage = () => {
             </div>
 
             <div className="step">
-              {selectedCategory && selectedCategory !== "기타" ? (
+              {selectedMenuCategory && selectedMenuCategory !== "기타" ? (
                 <select
                   value={selectedIngredient}
                   onChange={(e) => setSelectedIngredient(e.target.value)}
                 >
                   <option value="">재료 선택</option>
-                  {ingredientMap[selectedCategory]?.map((ingredient, index) => (
-                    <option key={index} value={ingredient}>
-                      {ingredient}
-                    </option>
-                  ))}
+                  {ingredientMap[selectedMenuCategory]?.map(
+                    (ingredient, index) => (
+                      <option key={index} value={ingredient}>
+                        {ingredient}
+                      </option>
+                    )
+                  )}
                 </select>
-              ) : selectedCategory === "기타" ? (
+              ) : selectedMenuCategory === "기타" ? (
                 <input
                   type="text"
                   placeholder="재료 이름 입력"
@@ -500,24 +511,24 @@ const HomePage = () => {
               >
                 <div className="step">
                   <select
-                    value={selectedCategory}
-                    onChange={(e) => setSelectedCategory(e.target.value)}
+                    value={selectedMenuCategory}
+                    onChange={(e) => setSelectedMenuCategory(e.target.value)}
                   >
                     <option value="">카테고리 선택</option>
-                    {defaultCategories.map((category) => (
+                    {menuCategories.map((category) => (
                       <option value={category}>{category}</option>
                     ))}
                   </select>
                 </div>
 
                 <div className="step">
-                  {selectedCategory && selectedCategory !== "기타" ? (
+                  {selectedMenuCategory && selectedMenuCategory !== "기타" ? (
                     <select
                       value={selectedIngredient}
                       onChange={(e) => setSelectedIngredient(e.target.value)}
                     >
                       <option value="">재료 선택</option>
-                      {ingredientMap[selectedCategory]?.map(
+                      {ingredientMap[selectedMenuCategory]?.map(
                         (ingredient, index) => (
                           <option key={index} value={ingredient}>
                             {ingredient}
@@ -525,7 +536,7 @@ const HomePage = () => {
                         )
                       )}
                     </select>
-                  ) : selectedCategory === "기타" ? (
+                  ) : selectedMenuCategory === "기타" ? (
                     <input
                       type="text"
                       placeholder="재료 이름 입력"
