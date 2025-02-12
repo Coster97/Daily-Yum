@@ -1,15 +1,15 @@
-import { db, auth } from "../services/firebaseConfig";
+import { db, auth } from "../firebaseConfig";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
-const addIngredient = async (ingredient) => {
+const editIngredient = async () => {
   try {
     const user = auth.currentUser;
     if (!user) return alert("로그인이 필요합니다!");
 
     await addDoc(collection(db, `users/${user.uid}/ingredients`), {
-      name: ingredient.name,      // 재료 이름
-      category: ingredient.category,  // 재료 카테고리
-      amount: ingredient.amount,  // 재료 양
+      name: ingredient.name, // 재료 이름
+      category: ingredient.category, // 재료 카테고리
+      amount: ingredient.amount, // 재료 양
       addedAt: serverTimestamp(), // 저장 시간 자동 생성
     });
 
@@ -19,4 +19,4 @@ const addIngredient = async (ingredient) => {
   }
 };
 
-export default addIngredient;
+export default editIngredient;

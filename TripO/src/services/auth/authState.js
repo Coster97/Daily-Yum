@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebaseConfig";
+import { auth } from "../firebaseConfig";
 
 // ✅ Firebase 로그인 상태 감지
 const checkAuthState = (setUser, navigate) => {

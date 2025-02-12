@@ -4,7 +4,7 @@ import { db, auth } from "../services/firebaseConfig";
 import { collection, addDoc, onSnapshot } from "firebase/firestore";
 import Header from "../components/Header";
 import "../styles/Ingredient.css";
-import fetchCategoryIngredients from "../services/fetchCategory";
+import fetchCategoryIngredients from "../services/refrigerator/fetchCategory";
 
 const HomePage = () => {
   const [selectedCategory, setSelectedCategory] = useState("전체");
@@ -218,21 +218,43 @@ const HomePage = () => {
     }
   };
 
-  // ✅ Firestore에 재료 추가하기
   const addIngredient = async () => {
     try {
       const user = auth.currentUser;
       if (!user) return alert("로그인이 필요합니다!");
 
+      // ✅ 필수 입력값 검증
+      if (!selectedMenuCategory) {
+        alert("카테고리를 선택해주세요!");
+        return;
+      }
+
+      if (!selectedIngredient && selectedMenuCategory !== "기타") {
+        alert("재료를 선택해주세요!");
+        return;
+      }
+
+      if (!customIngredient && selectedMenuCategory === "기타") {
+        alert("재료 이름을 입력해주세요!");
+        return;
+      }
+
+      if (!amount.trim()) {
+        alert("수량을 입력해주세요!");
+        return;
+      }
+
       await addDoc(collection(db, `users/${user.uid}/ingredients`), {
         name:
-          selectedMenuCategory === "기타" ? customIngredient : selectedIngredient,
+          selectedMenuCategory === "기타"
+            ? customIngredient
+            : selectedIngredient,
         category: selectedMenuCategory,
         amount,
       });
 
       alert("재료가 성공적으로 추가되었습니다!");
-      setSelectedCategory("");
+      setSelectedMenuCategory("");
       setCustomIngredient("");
       setSelectedIngredient("");
       setAmount("");
@@ -377,8 +399,10 @@ const HomePage = () => {
                     onChange={(e) => setSelectedMenuCategory(e.target.value)}
                   >
                     <option value="">카테고리 선택</option>
-                    {menuCategories.map((category) => (
-                      <option value={category}>{category}</option>
+                    {menuCategories.map((category, index) => (
+                      <option key={index} value={category}>
+                        {category}
+                      </option>
                     ))}
                   </select>
                 </div>

@@ -1,6 +1,6 @@
 import { signInWithPopup, signOut } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
-import { auth, provider, db } from "./firebaseConfig";
+import { auth, provider, db } from "../firebaseConfig";
 
 // ✅ Google 로그인 실행 (팝업 방식)
 const signInWithGoogle = async () => {

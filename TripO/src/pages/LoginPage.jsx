@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/LoginPage.css";
-import { signInWithGoogle, logout } from "../services/googleAuth";
+import { signInWithGoogle, logout } from "../services/auth/googleAuth";
 
 const LoginPage = () => {
   const [user, setUser] = useState(null);

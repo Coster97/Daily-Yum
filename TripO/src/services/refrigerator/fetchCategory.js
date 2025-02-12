@@ -1,5 +1,5 @@
 import { getDocs, collection, query, where } from "firebase/firestore";
-import { db, auth } from "../services/firebaseConfig";
+import { db, auth } from "../firebaseConfig";
 
 const fetchCategoryIngredients = async (category) => {
   try {
