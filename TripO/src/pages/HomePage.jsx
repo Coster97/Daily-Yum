@@ -4,6 +4,7 @@ import { db, auth } from "../services/firebaseConfig";
 import { collection, addDoc, onSnapshot } from "firebase/firestore";
 import Header from "../components/Header";
 import "../styles/Ingredient.css";
+import fetchCategoryIngredients from "../services/fetchCategory";
 
 const HomePage = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -11,20 +12,159 @@ const HomePage = () => {
   const [customIngredient, setCustomIngredient] = useState("");
   const [amount, setAmount] = useState("");
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [isFridgeModalOpen, setIsFridgeModalOpen] = useState(false);
   const [ingredients, setIngredients] = useState([]); // ✅ Firestore에서 불러올 데이터
+  const [fridgeItems, setFridgeItems] = useState([]); // ✅ 불러온 재료 저장
 
   const defaultCategories = [
-    { name: "야채/채소", image: "/assets/vegetable.jpg" },
-    { name: "과일", image: "/assets/fruit.jpg" },
-    { name: "육류", image: "/assets/meat.jpg" },
-    { name: "해산물", image: "/assets/seafood.jpg" },
-    { name: "계란/유제품", image: "/assets/dairy.jpg" },
-    { name: "가공식품", image: "/assets/processed.jpg" },
-    { name: "기타", image: "/assets/etc.jpg" },
+    "전체",
+    "야채/채소",
+    "과일",
+    "육류",
+    "해산물",
+    "계란/유제품",
+    "가공식품",
+    "기타",
   ];
 
   const ingredientMap = {
+    전체: [
+      "대파",
+      "양파",
+      "쪽파",
+      "마늘",
+      "당근",
+      "감자",
+      "고구마",
+      "브로콜리",
+      "애호박",
+      "청경채",
+      "배추",
+      "상추",
+      "깻잎",
+      "시금치",
+      "부추",
+      "콩나물",
+      "숙주나물",
+      "무",
+      "피망",
+      "파프리카",
+      "가지",
+      "오이",
+      "토마토",
+      "비트",
+      "아스파라거스",
+      "미나리",
+      "연근",
+      "우엉",
+      "샐러리",
+      "사과",
+      "배",
+      "바나나",
+      "귤",
+      "포도",
+      "복숭아",
+      "자두",
+      "블루베리",
+      "딸기",
+      "체리",
+      "파인애플",
+      "망고",
+      "키위",
+      "레몬",
+      "라임",
+      "수박",
+      "멜론",
+      "석류",
+      "코코넛",
+      "무화과",
+      "용과",
+      "감",
+      "유자",
+      "대추",
+      "아보카도",
+      "소고기",
+      "돼지고기",
+      "닭고기",
+      "오리고기",
+      "양고기",
+      "말고기",
+      "칠면조",
+      "베이컨",
+      "소시지",
+      "스테이크용 소고기",
+      "갈비",
+      "삼겹살",
+      "등심",
+      "안심",
+      "목살",
+      "닭가슴살",
+      "닭다리",
+      "닭봉",
+      "훈제오리",
+      "햄",
+      "양갈비",
+      "새우",
+      "연어",
+      "오징어",
+      "문어",
+      "조개",
+      "가리비",
+      "홍합",
+      "바지락",
+      "미역",
+      "다시마",
+      "멸치",
+      "고등어",
+      "갈치",
+      "참치",
+      "전복",
+      "장어",
+      "굴",
+      "꽃게",
+      "대게",
+      "킹크랩",
+      "랍스터",
+      "송어",
+      "청어",
+      "방어",
+      "노르웨이 고등어",
+      "계란",
+      "우유",
+      "치즈",
+      "버터",
+      "요거트",
+      "크림치즈",
+      "생크림",
+      "체다치즈",
+      "모짜렐라치즈",
+      "고다치즈",
+      "리코타치즈",
+      "그릭요거트",
+      "파마산치즈",
+      "카망베르치즈",
+      "브리치즈",
+      "코티지치즈",
+      "사워크림",
+      "햄",
+      "소시지",
+      "베이컨",
+      "어묵",
+      "스팸",
+      "훈제 닭가슴살",
+      "핫도그",
+      "참치캔",
+      "옥수수콘",
+      "삶은 계란",
+      "크래커",
+      "라면",
+      "컵라면",
+      "떡볶이떡",
+      "만두",
+      "냉동피자",
+      "냉동볶음밥",
+      "냉동 치킨너겟",
+      "냉동 감자튀김",
+    ],
     "야채/채소": [
       "대파",
       "양파",
@@ -191,26 +331,19 @@ const HomePage = () => {
   }, []);
 
   // ✅ Firestore에 재료 확인하기
-  const openFrideModal = async () => {
+  const viewIngredients = async (category) => {
     try {
       const user = auth.currentUser;
       if (!user) return alert("로그인이 필요합니다!");
-
-      // await addDoc(collection(db, `users/${user.uid}/ingredients`), {
-      //   name:
-      //     selectedCategory === "기타" ? customIngredient : selectedIngredient,
-      //   category: selectedCategory,
-      //   amount,
-      // });
-      setIsFridgeModalOpen(true);
+      setSelectedCategory(category);
+      // ✅ 이미 정의된 fetchCategoryIngredients 함수 호출
+      const ingredients = await fetchCategoryIngredients(category);
+      if (ingredients) {
+        setFridgeItems(ingredients); // ✅ 불러온 재료 상태 업데이트
+      }
     } catch (error) {
       console.error("❌ 재료 확인 실패:", error);
     }
-  };
-
-  // ✅ Firestore에 재료 확인창 닫기
-  const closeFridgeModal = () => {
-    setIsFridgeModalOpen(false);
   };
 
   // ✅ Firestore에 재료 추가하기
@@ -246,34 +379,29 @@ const HomePage = () => {
         <div className="fridge-section">
           <h3>내 냉장고</h3>
 
-          {/* ✅ 기존의 카테고리 카드 유지 */}
           <div className="category-list">
-            {defaultCategories.map((category, index) => (
+            {defaultCategories.map((category) => (
               <div
-                onClick={openFrideModal}
-                key={index}
-                className="category-card"
-                style={{ backgroundImage: `url(${category.image})` }}
+                onClick={() => viewIngredients(category)}
+                className={`category-card ${
+                  selectedCategory === category ? "active" : ""
+                }`}
               >
-                <div className="category-overlay">{category.name}</div>
+                {category}
               </div>
             ))}
           </div>
-          {isFridgeModalOpen && (
-            <div className="fridge-modal-page">
-              <div className="fridge-modal-content">
-                <button
-                  className="close-modal"
-                  onClick={() => setIsFridgeModalOpen(false)}
-                >
-                  x
-                </button>
-                <h3>냉장고 속 재료</h3>
-                <p>여기에 저장된 재료 목록을 표시하면 됩니다.</p>
-              </div>
+          <div className="ingredients-list">
+              {fridgeItems.length > 0 ? (
+                fridgeItems.map((item) => (
+                  <div className="ingredient-items" key={item.id}>
+                    {item.name} - {item.amount}
+                  </div>
+                ))
+              ) : (
+                <p>이 카테고리에 저장된 재료가 없습니다.</p>
+              )}
             </div>
-          )}
-
           <button
             className="add-ingredient-btn"
             onClick={() => setIsAddModalOpen(true)}
@@ -300,9 +428,9 @@ const HomePage = () => {
                 onChange={(e) => setSelectedCategory(e.target.value)}
               >
                 <option value="">카테고리 선택</option>
-                {defaultCategories.map((category, index) => (
-                  <option key={index} value={category.name}>
-                    {category.name}
+                {defaultCategories.slice(1).map((category, index) => (
+                  <option key={index} value={category}>
+                    {category}
                   </option>
                 ))}
               </select>
@@ -376,10 +504,8 @@ const HomePage = () => {
                     onChange={(e) => setSelectedCategory(e.target.value)}
                   >
                     <option value="">카테고리 선택</option>
-                    {defaultCategories.map((category, index) => (
-                      <option key={index} value={category.name}>
-                        {category.name}
-                      </option>
+                    {defaultCategories.map((category) => (
+                      <option value={category}>{category}</option>
                     ))}
                   </select>
                 </div>
