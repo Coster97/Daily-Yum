@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useAuth } from "../context/AuthContext";
 import { FaArrowLeft } from "react-icons/fa";
 import { db, auth } from "../services/firebaseConfig";
 import { collection, addDoc, onSnapshot } from "firebase/firestore";
@@ -7,6 +8,7 @@ import "../styles/Ingredient.css";
 import fetchCategoryIngredients from "../services/refrigerator/fetchCategory";
 
 const HomePage = () => {
+  const { user, loading } = useAuth();
   const [selectedCategory, setSelectedCategory] = useState("전체");
   const [selectedMenuCategory, setSelectedMenuCategory] = useState("");
   const [selectedIngredient, setSelectedIngredient] = useState("");
@@ -189,18 +191,10 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    const user = auth.currentUser;
-    if (!user) return;
-
-    const ingredientsRef = collection(db, `users/${user.uid}/ingredients`);
-    const unsubscribe = onSnapshot(ingredientsRef, (snapshot) => {
-      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      setIngredients(data);
-      setFridgeItems(data); // ✅ 처음에는 전체 데이터 표시
-    });
-
-    return () => unsubscribe();
-  }, []);
+    if (!loading && user) {
+      fetchCategoryIngredients("전체").then(setFridgeItems);
+    }
+  }, [user, loading]); // 🔥 user가 변경될 때만 실행
 
   // ✅ Firestore에 재료 확인하기
   const viewIngredients = async (category) => {
