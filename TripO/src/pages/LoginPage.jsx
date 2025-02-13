@@ -15,10 +15,6 @@ const LoginPage = () => {
     }
   };
 
-  const handleLogout = async () => {
-    await logout();
-    setUser(null);
-  };
 
   useEffect(() => {
     window.scrollTo(0, 0);

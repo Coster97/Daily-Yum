@@ -6,7 +6,7 @@ import checkAuthState from "../services/auth/authState"; // ✅ 로그인 상태
 import { signOut } from "firebase/auth";
 import { auth } from "../services/firebaseConfig";
 
-const Header = () => {
+const ProfileHeader = () => {
   const [user, setUser] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
@@ -73,45 +73,8 @@ const Header = () => {
           )}
         </div>
       </div>
-
-      <div className="container-2">
-        <div
-          className={`type-item ${
-            location.pathname === "/home" || location.pathname === "/"
-              ? "active"
-              : ""
-          }`}
-          onClick={() => navigate("/home")}
-        >
-          내 냉장고
-        </div>
-        <div
-          className={`type-item ${
-            location.pathname === "/recommend" ? "active" : ""
-          }`}
-          onClick={() => navigate("/recommend")}
-        >
-          추천요리
-        </div>
-        <div
-          className={`type-item ${
-            location.pathname === "/community" ? "active" : ""
-          }`}
-          onClick={() => navigate("/community")}
-        >
-          커뮤니티
-        </div>
-        <div
-          className={`type-item ${
-            location.pathname === "/recipe" ? "active" : ""
-          }`}
-          onClick={() => navigate("/recipe")}
-        >
-          오늘의 레시피
-        </div>
-      </div>
     </header>
   );
 };
 
-export default Header;
+export default ProfileHeader;

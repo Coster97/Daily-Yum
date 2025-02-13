@@ -3,11 +3,14 @@ import { useAuth } from "../context/AuthContext";
 import { FaArrowLeft } from "react-icons/fa";
 import { db, auth } from "../services/firebaseConfig";
 import { collection, addDoc, onSnapshot } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import "../styles/Ingredient.css";
 import fetchCategoryIngredients from "../services/refrigerator/fetchCategory";
+import deleteIngredient from "../services/refrigerator/deleteIngredient";
 
 const HomePage = () => {
+  const navigate = useNavigate();
   const { user, loading } = useAuth();
   const [selectedCategory, setSelectedCategory] = useState("전체");
   const [selectedMenuCategory, setSelectedMenuCategory] = useState("");
@@ -15,7 +18,6 @@ const HomePage = () => {
   const [customIngredient, setCustomIngredient] = useState("");
   const [amount, setAmount] = useState("");
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [ingredients, setIngredients] = useState([]); // ✅ Firestore에서 불러올 데이터
   const [fridgeItems, setFridgeItems] = useState([]); // ✅ 불러온 재료 저장
 
   const defaultCategories = [
@@ -199,8 +201,7 @@ const HomePage = () => {
   // ✅ Firestore에 재료 확인하기
   const viewIngredients = async (category) => {
     try {
-      const user = auth.currentUser;
-      if (!user) return alert("로그인이 필요합니다!");
+      if (!user) return navigate("/login"); // ✅ auth.currentUser 대신 user 사용
       setSelectedCategory(category);
       // ✅ 이미 정의된 fetchCategoryIngredients 함수 호출
       const ingredients = await fetchCategoryIngredients(category);
@@ -214,8 +215,7 @@ const HomePage = () => {
 
   const addIngredient = async () => {
     try {
-      const user = auth.currentUser;
-      if (!user) return alert("로그인이 필요합니다!");
+      if (!user) return navigate("/login"); // ✅ auth.currentUser 대신 user 사용
 
       // ✅ 필수 입력값 검증
       if (!selectedMenuCategory) {
@@ -283,6 +283,10 @@ const HomePage = () => {
               fridgeItems.map((item) => (
                 <div className="ingredient-items" key={item.id}>
                   {item.name} - {item.amount}
+                  <button onClick={() => deleteIngredient(item.id)}>
+                    삭제
+                  </button>{" "}
+                  {/* ✅ ID를 넘겨서 삭제 */}
                 </div>
               ))
             ) : (
