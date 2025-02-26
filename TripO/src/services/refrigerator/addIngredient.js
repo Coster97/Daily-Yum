@@ -9,7 +9,6 @@ const addIngredient = async (ingredient) => {
     await addDoc(collection(db, `users/${user.uid}/ingredients`), {
       name: ingredient.name, // 재료 이름
       category: ingredient.category, // 재료 카테고리
-      amount: ingredient.amount, // 재료 양
       createdAt: new Date(), // 저장 시간 자동 생성
     });
 

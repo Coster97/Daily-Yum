@@ -18,7 +18,6 @@ const HomePage = () => {
   const [selectedMenuCategory, setSelectedMenuCategory] = useState("");
   const [selectedIngredient, setSelectedIngredient] = useState("");
   const [customIngredient, setCustomIngredient] = useState("");
-  const [amount, setAmount] = useState("");
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [fridgeItems, setFridgeItems] = useState([]); // ✅ 불러온 재료 저장
 
@@ -235,18 +234,12 @@ const HomePage = () => {
         return;
       }
 
-      if (!amount.trim()) {
-        alert("수량을 입력해주세요!");
-        return;
-      }
-
       await addDoc(collection(db, `users/${user.uid}/ingredients`), {
         name:
           selectedMenuCategory === "기타"
             ? customIngredient
             : selectedIngredient,
         category: selectedMenuCategory,
-        amount,
         createdAt: new Date(),
       });
 
@@ -254,7 +247,6 @@ const HomePage = () => {
       setSelectedMenuCategory("");
       setCustomIngredient("");
       setSelectedIngredient("");
-      setAmount("");
       window.scrollTo(0, 0);
       setIsAddModalOpen(false);
     } catch (error) {
@@ -286,14 +278,12 @@ const HomePage = () => {
               <div className="ingredient-grid">
                 {fridgeItems.map((item) => (
                   <div className="ingredient-item" key={item.id}>
-                    <div>
-                      {item.name} - {item.amount}
-                    </div>
+                    <div>{item.name}</div>
                     <div className="date">
                       {item.createdAt
                         ? new Date(item.createdAt.toDate())
                             .toISOString()
-                            .split("T")[0] 
+                            .split("T")[0]
                         : "날짜 없음"}
                     </div>
                     <button
@@ -372,15 +362,6 @@ const HomePage = () => {
                   disabled
                 />
               )}
-            </div>
-
-            <div className="step">
-              <input
-                type="text"
-                placeholder="수량"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-              />
             </div>
 
             <button type="submit" className="add-button">
