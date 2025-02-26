@@ -89,7 +89,7 @@ input {
 }
 
 /* ✅ 모바일 대응 */
-@media (max-width: 768px) {
+@media (max-width: 890px) {
   .fridge-section h3 {
     display: none;
   }
@@ -137,7 +137,7 @@ input {
 }
 
 /* ✅ 모바일 반응형 */
-@media (max-width: 768px) {
+@media (max-width: 890px) {
   .add-button {
     width: 100%;
     font-size: 14px;
@@ -150,7 +150,7 @@ input {
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 890px) {
   .add-ingredient-btn {
     position: fixed; /* ✅ 화면에 고정 */
     bottom: 20px; /* ✅ 하단 여백 */
@@ -233,7 +233,7 @@ input {
 }
 
 /* ✅ 모바일에서만 적용 */
-@media (min-width: 769px) {
+@media (min-width: 891px) {
   .modal-page {
     display: none; /* ✅ PC에서는 숨김 */
   }
@@ -301,11 +301,42 @@ input {
   padding-top: 10%;
 }
 
-.ingredient-items {
-  border: 2px solid orange;
-  border-radius: 50px;
-  padding: 2% 4% 2%;
-  margin-bottom: 2%;
+.ingredient-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* ✅ 한 줄에 2개씩 정렬 */
+  gap: 16px; /* ✅ 카드 간격 */
+  width: 100%;
+}
+
+.ingredient-item {
+  background-color: #f9f9f9;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.date {
+  font-size: 0.9rem;
+  color: gray;
+}
+
+.delete-btn {
+  background-color: rgb(217, 35, 35);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.delete-btn:hover {
+  background-color: darkred;
 }
 
 .fridge-modal-page {

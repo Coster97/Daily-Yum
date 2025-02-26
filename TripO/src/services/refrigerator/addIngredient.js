@@ -7,10 +7,10 @@ const addIngredient = async (ingredient) => {
     if (!user) return alert("로그인이 필요합니다!");
 
     await addDoc(collection(db, `users/${user.uid}/ingredients`), {
-      name: ingredient.name,      // 재료 이름
-      category: ingredient.category,  // 재료 카테고리
-      amount: ingredient.amount,  // 재료 양
-      addedAt: serverTimestamp(), // 저장 시간 자동 생성
+      name: ingredient.name, // 재료 이름
+      category: ingredient.category, // 재료 카테고리
+      amount: ingredient.amount, // 재료 양
+      createdAt: new Date(), // 저장 시간 자동 생성
     });
 
     alert("재료가 성공적으로 추가되었습니다!");

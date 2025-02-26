@@ -8,6 +8,8 @@ import Header from "../components/Header";
 import "../styles/Ingredient.css";
 import fetchCategoryIngredients from "../services/refrigerator/fetchCategory";
 import deleteIngredient from "../services/refrigerator/deleteIngredient";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -245,6 +247,7 @@ const HomePage = () => {
             : selectedIngredient,
         category: selectedMenuCategory,
         amount,
+        createdAt: new Date(),
       });
 
       alert("재료가 성공적으로 추가되었습니다!");
@@ -280,15 +283,28 @@ const HomePage = () => {
           </div>
           <div className="ingredients-list">
             {fridgeItems.length > 0 ? (
-              fridgeItems.map((item) => (
-                <div className="ingredient-items" key={item.id}>
-                  {item.name} - {item.amount}
-                  <button onClick={() => deleteIngredient(item.id)}>
-                    삭제
-                  </button>{" "}
-                  {/* ✅ ID를 넘겨서 삭제 */}
-                </div>
-              ))
+              <div className="ingredient-grid">
+                {fridgeItems.map((item) => (
+                  <div className="ingredient-item" key={item.id}>
+                    <div>
+                      {item.name} - {item.amount}
+                    </div>
+                    <div className="date">
+                      {item.createdAt
+                        ? new Date(item.createdAt.toDate())
+                            .toISOString()
+                            .split("T")[0] 
+                        : "날짜 없음"}
+                    </div>
+                    <button
+                      className="delete-btn"
+                      onClick={() => deleteIngredient(item.id)}
+                    >
+                      삭제
+                    </button>
+                  </div>
+                ))}
+              </div>
             ) : (
               <p>이 카테고리에 저장된 재료가 없습니다.</p>
             )}
@@ -345,7 +361,7 @@ const HomePage = () => {
               ) : selectedMenuCategory === "기타" ? (
                 <input
                   type="text"
-                  placeholder="재료 이름 입력"
+                  placeholder="재료 이름"
                   value={customIngredient}
                   onChange={(e) => setCustomIngredient(e.target.value)}
                 />
@@ -361,7 +377,7 @@ const HomePage = () => {
             <div className="step">
               <input
                 type="text"
-                placeholder="예: 한 단, 500g"
+                placeholder="수량"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
               />
@@ -423,7 +439,7 @@ const HomePage = () => {
                   ) : selectedMenuCategory === "기타" ? (
                     <input
                       type="text"
-                      placeholder="재료 이름 입력"
+                      placeholder="재료 이름"
                       value={customIngredient}
                       onChange={(e) => setCustomIngredient(e.target.value)}
                     />
@@ -435,16 +451,6 @@ const HomePage = () => {
                     />
                   )}
                 </div>
-
-                <div className="step">
-                  <input
-                    type="text"
-                    placeholder="예: 한 단, 500g"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                  />
-                </div>
-
                 <button type="submit" className="add-button">
                   재료 추가하기
                 </button>
