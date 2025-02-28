@@ -14,7 +14,7 @@
 
 /* ✅ 세로 구분선 추가 */
 .divider {
-  width: 2px; /* ✅ 구분선 두께 */
+  width: 1px; /* ✅ 구분선 두께 */
   background-color: rgba(0, 0, 0, 0.2); /* ✅ 연한 검은색 */
   height: 100%; /* ✅ 부모 요소 높이에 맞춤 */
   min-height: 300px; /* ✅ 최소 높이 설정 */

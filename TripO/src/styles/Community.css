@@ -13,6 +13,7 @@
   width: 100%;
   max-width: 1200px; /* ✅ 너무 넓어지는 걸 방지 */
   margin: 0 auto; /* ✅ 중앙 정렬 */
+  padding: 2%;
 }
 
 .post-card {
@@ -41,10 +42,14 @@
 
 .post-btn {
   background-color: rgb(255, 255, 255);
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #45a049;
   border-radius: 20px;
-  border: 3px solid #45a049bb;
-  padding: 20px;
+  border: 2px solid #45a049bb;
+  padding: 15px;
   text-shadow: none;
+}
+
+.name {
+  background-color: yellow;
 }
