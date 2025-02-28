@@ -29,7 +29,7 @@
 
 .post-card img {
   width: 100%; /* ✅ 카드 안에서 꽉 차게 */
-  height: auto; /* ✅ 비율 유지 */
+  height: 150px; /* ✅ 비율 유지 */
   border-radius: 10px;
 }
 

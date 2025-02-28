@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { FaArrowLeft } from "react-icons/fa";
-import { db, auth } from "../services/firebaseConfig";
-import { collection, addDoc, onSnapshot } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import "../styles/Ingredient.css";
 import fetchCategoryIngredients from "../services/refrigerator/fetchCategory";
-import deleteIngredient from "../services/refrigerator/deleteIngredient";
-import DatePicker from "react-datepicker";
+import addIngredient from "../services/refrigerator/addIngredient";
 import "react-datepicker/dist/react-datepicker.css";
 
 const HomePage = () => {
@@ -20,7 +17,6 @@ const HomePage = () => {
   const [customIngredient, setCustomIngredient] = useState("");
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [fridgeItems, setFridgeItems] = useState([]); // ✅ 불러온 재료 저장
-  const [deleteModals, setDeleteModals] = useState({}); // ✅ 각 재료별 모달 상태 관리
 
   const defaultCategories = [
     "전체",
@@ -215,7 +211,7 @@ const HomePage = () => {
     }
   };
 
-  const addIngredient = async () => {
+  const handleAddIngredient = async () => {
     try {
       if (!user) return navigate("/login"); // ✅ auth.currentUser 대신 user 사용
 
@@ -235,16 +231,13 @@ const HomePage = () => {
         return;
       }
 
-      await addDoc(collection(db, `users/${user.uid}/ingredients`), {
+      await addIngredient({
         name:
           selectedMenuCategory === "기타"
             ? customIngredient
             : selectedIngredient,
         category: selectedMenuCategory,
-        createdAt: new Date(),
       });
-
-      alert("재료가 성공적으로 추가되었습니다!");
       setSelectedMenuCategory("");
       setCustomIngredient("");
       setSelectedIngredient("");
@@ -253,13 +246,6 @@ const HomePage = () => {
     } catch (error) {
       console.error("❌ 재료 추가 실패:", error);
     }
-  };
-  // ✅ 특정 카드의 모달 열기/닫기
-  const toggleDeleteModal = (id) => {
-    setDeleteModals((prev) => ({
-      ...prev,
-      [id]: !prev[id], // 기존 상태의 반대로 토글
-    }));
   };
 
   return (
@@ -324,7 +310,7 @@ const HomePage = () => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              addIngredient();
+              handleAddIngredient();
             }}
           >
             <div className="step">
@@ -393,7 +379,7 @@ const HomePage = () => {
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
-                  addIngredient();
+                  handleAddIngredient();
                 }}
               >
                 <div className="step">

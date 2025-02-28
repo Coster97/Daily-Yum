@@ -1,5 +1,5 @@
 import { db, auth } from "../firebaseConfig";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 
 const addIngredient = async (ingredient) => {
   try {

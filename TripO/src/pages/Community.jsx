@@ -49,7 +49,10 @@ const CommunityPage = () => {
           )}
         </div>
         <div class="post-btn-div">
-          <button className="post-btn" onClick={() => navigate("/upload")}>
+          <button
+            className="post-btn"
+            onClick={() => navigate("/community/new")}
+          >
             <FaPencilAlt />
           </button>
         </div>

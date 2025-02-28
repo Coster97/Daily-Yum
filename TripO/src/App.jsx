@@ -6,7 +6,7 @@ import HomePage from "./pages/HomePage";
 import RecommendPage from "./pages/Recommend";
 import CommunityPage from "./pages/Community";
 import RecipePage from "./pages/RecipePage";
-import ImageUpload from "./pages/ImageUpload";
+import CommunityPost from "./pages/CommunityPost";
 import { AuthProvider } from "./context/AuthContext";
 
 const App = () => {
@@ -21,7 +21,7 @@ const App = () => {
           <Route path="/recommend" element={<RecommendPage />} />
           <Route path="/community" element={<CommunityPage />} />
           <Route path="/recipe" element={<RecipePage />} />
-          <Route path="/upload" element={<ImageUpload />} />
+          <Route path="/community/new" element={<CommunityPost />} />
         </Routes>
       </Router>
     </AuthProvider>
