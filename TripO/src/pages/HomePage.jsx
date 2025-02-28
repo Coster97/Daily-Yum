@@ -20,6 +20,7 @@ const HomePage = () => {
   const [customIngredient, setCustomIngredient] = useState("");
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [fridgeItems, setFridgeItems] = useState([]); // ✅ 불러온 재료 저장
+  const [deleteModals, setDeleteModals] = useState({}); // ✅ 각 재료별 모달 상태 관리
 
   const defaultCategories = [
     "전체",
@@ -253,6 +254,13 @@ const HomePage = () => {
       console.error("❌ 재료 추가 실패:", error);
     }
   };
+  // ✅ 특정 카드의 모달 열기/닫기
+  const toggleDeleteModal = (id) => {
+    setDeleteModals((prev) => ({
+      ...prev,
+      [id]: !prev[id], // 기존 상태의 반대로 토글
+    }));
+  };
 
   return (
     <div className="ingredient-div">
@@ -273,11 +281,16 @@ const HomePage = () => {
               </div>
             ))}
           </div>
+
           <div className="ingredients-list">
             {fridgeItems.length > 0 ? (
               <div className="ingredient-grid">
                 {fridgeItems.map((item) => (
-                  <div className="ingredient-item" key={item.id}>
+                  <div
+                    className="ingredient-item"
+                    key={item.id}
+                    style={{ position: "relative" }}
+                  >
                     <div>{item.name}</div>
                     <div className="date">
                       {item.createdAt
@@ -286,12 +299,6 @@ const HomePage = () => {
                             .split("T")[0]
                         : "날짜 없음"}
                     </div>
-                    <button
-                      className="delete-btn"
-                      onClick={() => deleteIngredient(item.id)}
-                    >
-                      삭제
-                    </button>
                   </div>
                 ))}
               </div>
@@ -299,6 +306,7 @@ const HomePage = () => {
               <p>이 카테고리에 저장된 재료가 없습니다.</p>
             )}
           </div>
+
           <button
             className="add-ingredient-btn"
             onClick={() => setIsAddModalOpen(true)}

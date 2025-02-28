@@ -325,20 +325,6 @@ input {
   color: gray;
 }
 
-.delete-btn {
-  background-color: rgb(217, 35, 35);
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 8px;
-}
-
-.delete-btn:hover {
-  background-color: darkred;
-}
-
 .fridge-modal-page {
   position: fixed; /* ✅ 화면에 고정 */
   top: 0;

@@ -91,7 +91,7 @@ const Header = () => {
           }`}
           onClick={() => navigate("/recommend")}
         >
-          추천요리
+          추천 레시피
         </div>
         <div
           className={`type-item ${
@@ -107,7 +107,7 @@ const Header = () => {
           }`}
           onClick={() => navigate("/recipe")}
         >
-          오늘의 레시피
+          ☆ 스크랩
         </div>
       </div>
     </header>

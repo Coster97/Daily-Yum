@@ -1,0 +1,50 @@
+.community-flex-div {
+  display: flex; /* ✅ 가운데 정렬을 위해 추가 */
+  justify-content: center; /* ✅ 내부 요소를 가운데 정렬 */
+}
+
+.posts-container {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  ); /* ✅ 한 줄에 여러 개 정렬 */
+  gap: 2%;
+  width: 100%;
+  max-width: 1200px; /* ✅ 너무 넓어지는 걸 방지 */
+  margin: 0 auto; /* ✅ 중앙 정렬 */
+}
+
+.post-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: start;
+  width: 100%; /* ✅ 부모 grid 크기에 맞춤 */
+  padding: 20px; /* ✅ 내부 여백 추가 */
+  box-sizing: border-box; /* ✅ 패딩 포함하여 크기 조절 */
+  overflow: hidden; /* ✅ 넘치는 내용 숨김 */
+  text-overflow: ellipsis; /* ✅ 긴 텍스트 말줄임 처리 */
+}
+
+.post-card img {
+  width: 100%; /* ✅ 카드 안에서 꽉 차게 */
+  height: auto; /* ✅ 비율 유지 */
+  border-radius: 10px;
+}
+
+.post-btn-div {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.post-btn {
+  background-color: rgb(255, 255, 255);
+  font-size: 2rem;
+  color: #45a049;
+  border-radius: 20px;
+  border: 3px solid #45a049bb;
+  padding: 20px;
+  text-shadow: none;
+}
