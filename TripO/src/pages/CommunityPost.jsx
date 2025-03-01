@@ -13,6 +13,7 @@ const CommunityPost = () => {
   const [tools, setTools] = useState("");
   const [steps, setSteps] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // ✅ 이미지 선택 시 미리보기 설정
   const handleImageChange = (e) => {
@@ -21,6 +22,10 @@ const CommunityPost = () => {
       setImage(file);
       setPreview(URL.createObjectURL(file));
     }
+  };
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
   };
 
   // ✅ 게시글 업로드 함수
@@ -151,7 +156,66 @@ const CommunityPost = () => {
             </div>
           </form>
         </div>
-        <div className="mobile-post-guide-btn">💡 가이드</div>
+
+        {isModalOpen && (
+          <div className="m-guide-modal-div">
+            <div className="m-guide-modal">
+              <div className="m-guide-modal-top">
+                <h3>💡 레시피 작성 가이드</h3>
+                <button
+                  className="m-guide-modal-btn"
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  x
+                </button>
+              </div>
+
+              <div className="m-guide-modal-content">
+                <h3>1. 레시피 대표 이미지 </h3>
+                <p>
+                  파일 선택 버튼을 눌러 내 레시피의 대표 이미지를 추가해주세요
+                </p>
+
+                <h3>2. 레시피 제목 </h3>
+                <p>
+                  요리를 한눈에 알 수 있는 제목을 적어주세요 <br />✔ 예시:
+                  "자취생을 위한 간단 밀푀유나베"
+                </p>
+
+                <h3>3. 간단한 설명</h3>
+                <p>
+                  어떤 요리인지 특징을 짧게 소개해주세요.
+                  <br />✔ 예시: "냉장고 속 재료들로 간편하게 만들 수 있는
+                  밀푀유나베 레시피! <br />
+                </p>
+                <h3>4. 필요한 재료</h3>
+                <p>
+                  필요한 재료를 쉼표(,)로 구분하여 작성해주세요. <br />✔ 예시:
+                  "배추, 깻잎, 소고기, 국물용 다시팩, 국간장, 소금, 후추"
+                </p>
+                <h3>5. 필요한 조리 도구</h3>
+                <p>
+                  필요한 조리 도구를 쉼표(,)로 구분하여 작성해주세요. <br />✔
+                  예시: "냄비, 가스레인지, 집게, 칼, 도마"
+                </p>
+                <h3>6. 요리 순서</h3>
+                <p>
+                  조리 과정을 한 단계씩 나눠서 설명해주세요. 줄을 바꾸면
+                  자동으로 단계가 나눠져요. <br />✔ 예시: 1. 냄비에 물 500ml를
+                  넣고 끓인다.
+                  <br /> 2. 배추 → 깻잎 → 소고기 순서로 쌓아서 냄비에 둥글게
+                  채운다. <br />
+                  3. 다시팩을 넣고 국물이 우러나도록 10분간 끓인다. <br />
+                  4. 국간장, 소금, 후추로 간을 맞춘 후 완성!
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+        <div className="m-guide-btn" onClick={handleModalOpen}>
+          💡 가이드
+        </div>
+
         {/* ✅ 세로 구분선 */}
         <div className="divider"></div>
 

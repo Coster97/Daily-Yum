@@ -288,6 +288,11 @@ input {
   font-size: 1.2vw;
   cursor: pointer;
   transition: all 0.3s ease;
+  
+}
+
+.category-list::-webkit-scrollbar{
+  display: none;
 }
 /* 
 /* ✅ 마우스 오버 효과 */

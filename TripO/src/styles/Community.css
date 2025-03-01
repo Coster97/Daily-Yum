@@ -1,7 +1,7 @@
 .community-flex-div {
   display: flex; /* ✅ 가운데 정렬을 위해 추가 */
   justify-content: center; /* ✅ 내부 요소를 가운데 정렬 */
-  margin-top: 2%;
+  margin: 4%;
 }
 
 .posts-container {
@@ -95,7 +95,7 @@ h3 {
       minmax(250px, 1fr)
     ); /* ✅ 한 줄에 여러 개 정렬 */
     gap: 1%;
-    width: 80%;
+    width: 90%;
     max-width: 1280px; /* ✅ 너무 넓어지는 걸 방지 */
     margin: 0 auto; /* ✅ 중앙 정렬 */
     font-size: 3.5vw;
