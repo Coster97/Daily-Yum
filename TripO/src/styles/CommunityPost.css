@@ -98,7 +98,7 @@ textarea {
   top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90%;
+  width: 100%;
   max-width: 300px; /* ✅ 최대 너비 설정 */
   max-height: 90vh; /* ✅ 최대 높이 (뷰포트의 80%) */
   z-index: 1000;
@@ -108,7 +108,6 @@ textarea {
   border-radius: 20px;
   border: 3px solid orange;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  padding: 20px;
   overflow-y: auto; /* ✅ 내용이 길면 스크롤 가능 */
 }
 
@@ -119,25 +118,24 @@ textarea {
   position: sticky;
   top: 0;
   z-index: 10;
+  padding: 3px 0px 0px 15px;
   background-color: white;
 }
 
-.m-guide-modal-btn{
+.m-guide-modal-btn {
   background-color: transparent;
   color: orange;
   border: none;
-  font-size: 7vw;
-  align-items: center;
 }
 
 /* ✅ 모달 본문 (스크롤 가능) */
 .m-guide-modal-content {
   text-align: left;
-  padding: 0px;
   font-size: 3.5vw;
   line-height: 1.6;
   overflow-y: auto; /* ✅ 본문 내용만 스크롤 */
   max-height: 70vh; /* ✅ 전체 모달 높이에서 남은 부분만 스크롤 */
+  padding: 15px;
 }
 
 /* ✅ 반응형 (모바일) */
@@ -145,7 +143,6 @@ textarea {
   .m-guide-modal-div {
     width: 95%;
     font-size: 0.9rem;
-    padding: 15px;
     max-height: 95vh; /* ✅ 모바일에서도 화면을 넘지 않도록 조정 */
   }
 
