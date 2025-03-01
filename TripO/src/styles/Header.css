@@ -69,7 +69,7 @@ a:hover {
   justify-content: space-around;
   margin: 1px;
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 1.2vw;
 }
 
 .type-item {
@@ -93,4 +93,14 @@ a:hover {
 .logo {
   width: 50px; /* ✅ 적절한 크기로 조정 */
   height: auto;
+}
+
+@media (max-width: 890px) {
+  .container-2 {
+    display: flex;
+    justify-content: space-around;
+    margin: 1px;
+    font-weight: 400;
+    font-size: 3vw;
+  }
 }

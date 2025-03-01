@@ -68,8 +68,8 @@ const CommunityPost = () => {
     <div>
       <Header />
       <div className="post-flex-div">
-        <div className="[ost-container">
-          <h2>나만의 레시피를 작성해보세요.</h2>
+        <div className="post-container">
+          <h2>작성 예시 확인하기</h2>
           <form onSubmit={handleAddPost} className="post-form">
             {/* 이미지 업로드 */}
             <div className="form-group image-upload">
@@ -77,6 +77,7 @@ const CommunityPost = () => {
               <input
                 type="file"
                 accept="image/*"
+                className="post-input"
                 onChange={handleImageChange}
               />
               {preview && (
@@ -90,6 +91,7 @@ const CommunityPost = () => {
               <input
                 type="text"
                 placeholder="레시피 제목을 입력하세요"
+                className="post-input"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
@@ -101,6 +103,7 @@ const CommunityPost = () => {
               <textarea
                 placeholder="레시피를 간단하게 설명해주세요"
                 value={description}
+                className="post-input"
                 onChange={(e) => setDescription(e.target.value)}
               />
             </div>
@@ -111,6 +114,7 @@ const CommunityPost = () => {
               <input
                 type="text"
                 placeholder="쉼표로 구분하여 입력 (예: 감자, 당근, 양파)"
+                className="post-input"
                 value={ingredients}
                 onChange={(e) => setIngredients(e.target.value)}
               />
@@ -123,6 +127,7 @@ const CommunityPost = () => {
                 type="text"
                 placeholder="쉼표로 구분하여 입력 (예: 후라이팬, 국자)"
                 value={tools}
+                className="post-input"
                 onChange={(e) => setTools(e.target.value)}
               />
             </div>
@@ -133,6 +138,7 @@ const CommunityPost = () => {
               <textarea
                 placeholder="각 단계를 줄바꿈으로 구분하여 입력하세요"
                 value={steps}
+                className="post-input"
                 onChange={(e) => setSteps(e.target.value)}
               />
             </div>
@@ -145,10 +151,12 @@ const CommunityPost = () => {
             </div>
           </form>
         </div>
+        <div className="mobile-post-guide-btn">💡 가이드</div>
         {/* ✅ 세로 구분선 */}
         <div className="divider"></div>
+
         <div className="post-guide">
-          <h2>작성 예시를 확인해보세요.</h2>
+          <div className="post-guide-title">💡 작성 예시를 확인해보세요.</div>
           <div>
             <img
               src="/assets/postExample.jpg"
